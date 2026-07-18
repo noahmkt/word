@@ -1,0 +1,137 @@
+/* ============================================================
+   T6. 히어로 배경 모션 (xerf.kr 스타일: 장비 고정 + 배경만 드리프트)
+   ------------------------------------------------------------
+   현행 히어로(#intro)는 단일 합성 이미지(01-4-scaled.png) 1장이다.
+   PSD(화인웨이브 장비사진.psd)에서 정면 장비 누끼를 추출해 두었고
+   (output/hero-layers/hero-equipment-cutout.png/webp),
+   장비를 제거한 배경 이미지도 제작해 두었다
+   (output/hero-layers/hero-bg-clean.png/webp — AI 보정 제작).
+   → 두 레이어가 모두 준비되어 있으므로 기본 권장은 [방식 A].
+
+   방식 선택 기준 (apply-guide.md에도 정리):
+   · A안(권장): 배경/장비 2-레이어 확보됨 → 배경만 느리게 드리프트
+   · B안(보조): 레이어 교체 없이 현행 합성 이미지 유지 →
+                웨이브 SVG 오버레이만 흐르게 (구조 변경 최소화)
+   공통: transform/opacity만 사용(GPU 합성), reduced-motion 대응
+   ============================================================ */
+
+/* ============================================================
+   [방식 A] 배경 레이어 드리프트 (배경/장비 분리 적용 시)
+   ------------------------------------------------------------
+   Elementor 구성 (HTML 위젯 또는 컨테이너 구조):
+   <div class="fw-hero">
+     <div class="fw-hero__bg"><img src="[업로드]/hero-bg-clean.webp" alt=""></div>
+     <img class="fw-hero__device" src="[업로드]/hero-equipment-cutout.webp" alt="FINEWAVE 장비">
+     <div class="fw-hero__copy"> …로고/카피 텍스트(선택)… </div>
+   </div>
+   ============================================================ */
+
+.fw-hero {
+  position: relative;
+  overflow: hidden;          /* 드리프트 여백이 밖으로 새지 않게 */
+  min-height: 100vh;
+}
+
+/* 배경: 화면보다 6% 크게 깔고 26s 루프로 느리게 표류 */
+.fw-hero__bg {
+  position: absolute;
+  inset: -3%;                /* 이동 여유분 */
+  will-change: transform;
+  animation: fw-hero-drift 26s ease-in-out infinite alternate;
+}
+.fw-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@keyframes fw-hero-drift {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  50%  { transform: translate3d(-1.2%, 0.8%, 0) scale(1.03); }
+  100% { transform: translate3d(1.0%, -0.6%, 0) scale(1.05); }
+}
+
+/* 은은한 그라디언트 시프트: 시안 광원이 숨쉬듯 밝아졌다 어두워짐 */
+.fw-hero__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(60% 50% at 70% 35%, rgba(83, 239, 255, 0.10), transparent 70%);
+  opacity: 0;
+  animation: fw-hero-glow 13s ease-in-out infinite alternate;
+}
+
+@keyframes fw-hero-glow {
+  to { opacity: 1; }
+}
+
+/* 장비: 중앙 고정 (움직이지 않음) */
+.fw-hero__device {
+  position: relative;
+  z-index: 2;
+  display: block;
+  margin: 0 auto;
+  max-height: 92vh;
+  width: auto;
+}
+
+.fw-hero__copy {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* ============================================================
+   [방식 B] 합성 이미지 유지 + 웨이브 오버레이 유동 (레이어 교체 없이)
+   ------------------------------------------------------------
+   현행 #intro의 이미지 위젯은 그대로 두고, 같은 컨테이너에
+   HTML 위젯으로 오버레이 1장만 얹는다:
+   <div class="fw-hero-overlay" aria-hidden="true">
+     <img src="[업로드]/wave-c-glow.png" alt="">
+     <img src="[업로드]/wave-c-glow.png" alt="">
+   </div>
+   (이미지 2장을 이어붙여 무한 수평 루프. wave-patterns/ 산출물 재사용)
+   #intro 컨테이너에는 Elementor 고급 설정에서 overflow:hidden 지정
+   또는 아래 #intro 규칙 사용
+   ============================================================ */
+
+#intro { overflow: hidden; }
+
+.fw-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;                 /* 합성 이미지 위, 텍스트 아래 */
+  display: flex;
+  width: 200%;                /* 이미지 2장 가로 배치 */
+  opacity: 0.35;              /* 은은하게 */
+  pointer-events: none;
+  mix-blend-mode: screen;     /* 다크 배경 위 라인만 얹힘 */
+  will-change: transform;
+  animation: fw-hero-flow 40s linear infinite;
+}
+.fw-hero-overlay img {
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  flex: none;
+}
+
+@keyframes fw-hero-flow {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }  /* 1장 폭만큼 이동 후 루프 */
+}
+
+/* ============================================================
+   공통: 모션 최소화 환경에서는 모든 드리프트/플로우 정지
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .fw-hero__bg,
+  .fw-hero__bg::after,
+  .fw-hero-overlay {
+    animation: none;
+  }
+  .fw-hero__bg::after { opacity: 0.5; }
+}

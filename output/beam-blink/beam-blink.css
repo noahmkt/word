@@ -1,0 +1,58 @@
+/* ============================================================
+   FINEWAVE 빔 깜빡임 효과 (T3)
+   - off 프레임(beam-off) 위에 on 프레임(beam-on)을 겹치고
+     상단 프레임 opacity만 크로스페이드 (GPU 합성: opacity만 사용)
+   - 주기 2.8s / ease-in-out / 무한 반복
+   - prefers-reduced-motion: on 프레임 정지 상태 유지
+   - Elementor 적용: FINECOOL 이미지 위젯을 HTML 위젯으로 교체하거나,
+     기존 이미지 위젯 아래 HTML 위젯으로 마크업 삽입 (apply-guide.md 참조)
+   ============================================================ */
+
+.fw-beam {
+  position: relative;
+  display: block;
+  max-width: 100%;
+  line-height: 0;
+}
+
+.fw-beam img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* on 프레임: off 프레임 위에 같은 위치로 겹침 */
+.fw-beam .fw-beam__on {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  animation: fw-beam-blink 2.8s ease-in-out infinite;
+  will-change: opacity;
+}
+
+@keyframes fw-beam-blink {
+  0%   { opacity: 0; }
+  45%  { opacity: 1; }   /* 서서히 점등 */
+  60%  { opacity: 1; }   /* 점등 유지 */
+  100% { opacity: 0; }   /* 서서히 소등 */
+}
+
+/* 모션 최소화 환경: 애니메이션 정지, on 프레임(정지 화면) 고정 */
+@media (prefers-reduced-motion: reduce) {
+  .fw-beam .fw-beam__on {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* ------------------------------------------------------------
+   적용 마크업 예 (Elementor HTML 위젯):
+
+   <figure class="fw-beam">
+     <img src="[업로드경로]/beam-off.webp" alt="FINECOOL 핸드피스">
+     <img class="fw-beam__on" src="[업로드경로]/beam-on.webp" alt="" aria-hidden="true">
+   </figure>
+
+   * 두 프레임은 동일 해상도(1536×1024)이므로 그대로 겹치면 정렬됨
+   * webp 대신 무손실 png(beam-off.png / beam-on.png)도 동일하게 사용 가능
+   ------------------------------------------------------------ */

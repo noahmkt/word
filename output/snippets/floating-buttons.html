@@ -1,0 +1,142 @@
+<!-- ============================================================
+  T5. 우측 플로팅 버튼: 문의사항 + TOP (단일 파일, Elementor HTML 위젯용)
+  ------------------------------------------------------------
+  · 이 파일 전체를 Elementor HTML 위젯에 붙여넣으면 동작 (외부 의존성 없음)
+  · {{INQUIRY_URL}} 를 실제 문의 링크로 치환할 것 (현행과 동일하게 하려면 #contact)
+  · 현행 '문의사항' 버튼 톤 매칭: 반투명 화이트 카드(rgba 255,255,255,.2,
+    radius 10px) + 흰 아이콘 30px + 흰 라벨 16px  ← 2026-07-18 실측
+  · 적용 전: 기존 Elementor 플로팅 컨테이너(1e355fd)와
+    Astra 기본 '상단 이동' 버튼을 비활성화해 중복을 막을 것 (apply-guide.md)
+  · TOP 버튼: 스크롤 300px 이후 페이드인, 클릭 시 최상단 smooth scroll
+  · 애니메이션은 opacity/transform만 사용, prefers-reduced-motion 대응
+  ============================================================ -->
+
+<div class="fw-float" role="navigation" aria-label="빠른 메뉴">
+
+  <!-- 문의사항 버튼 -->
+  <a class="fw-float__btn fw-float__inquiry" href="{{INQUIRY_URL}}" aria-label="문의사항으로 이동">
+    <span class="fw-float__icon" aria-hidden="true">
+      <!-- comment-dots (현행과 동일 아이콘) -->
+      <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+        <path d="M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32zM128 272c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z"/>
+      </svg>
+    </span>
+    <span class="fw-float__label">문의사항</span>
+  </a>
+
+  <!-- TOP 버튼 -->
+  <button type="button" class="fw-float__btn fw-float__top" id="fwTopBtn" aria-label="맨 위로 이동">
+    <span class="fw-float__icon" aria-hidden="true">
+      <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+        <path d="M240.971 130.524l194.343 194.343c9.373 9.373 9.373 24.569 0 33.941l-22.667 22.667c-9.357 9.357-24.522 9.375-33.901.04L224 227.495 69.255 381.516c-9.379 9.335-24.544 9.317-33.901-.04l-22.667-22.667c-9.373-9.373-9.373-24.569 0-33.941L207.03 130.525c9.372-9.373 24.568-9.373 33.941-.001z"/>
+      </svg>
+    </span>
+    <span class="fw-float__label">TOP</span>
+  </button>
+
+</div>
+
+<style>
+  .fw-float {
+    position: fixed;
+    right: 24px;
+    top: 600px;              /* 현행 문의사항 버튼 위치(top 600px) 기준 */
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .fw-float__btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 74px;
+    height: 74px;
+    background: rgba(255, 255, 255, 0.2);   /* 현행 반투명 화이트 카드 */
+    border: 0;
+    border-radius: 10px;
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    font-family: Roboto, sans-serif;
+  }
+  .fw-float__btn:hover { transform: translateY(-2px); }
+
+  .fw-float__icon { line-height: 0; }
+  .fw-float__icon svg { width: 28px; height: 28px; }
+  .fw-float__top .fw-float__icon svg { width: 20px; height: 20px; }
+
+  .fw-float__label {
+    font-size: 13px;
+    font-weight: 400;
+    color: #fff;
+    letter-spacing: 0.02em;
+  }
+  .fw-float__inquiry .fw-float__label { font-size: 14px; }
+
+  /* TOP 버튼: 기본 숨김 → 스크롤 300px 이후 페이드인 */
+  .fw-float__top {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(6px);
+  }
+  .fw-float__top.fw-is-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  /* 모바일(≤768px): 크기·간격 축소, 하단 우측 배치 */
+  @media (max-width: 768px) {
+    .fw-float {
+      right: 12px;
+      top: auto;
+      bottom: 24px;
+      gap: 8px;
+    }
+    .fw-float__btn { width: 56px; height: 56px; border-radius: 8px; gap: 4px; }
+    .fw-float__icon svg { width: 20px; height: 20px; }
+    .fw-float__top .fw-float__icon svg { width: 15px; height: 15px; }
+    .fw-float__label { font-size: 10px; }
+    .fw-float__inquiry .fw-float__label { font-size: 11px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fw-float__btn, .fw-float__top { transition: none; }
+    .fw-float__btn:hover { transform: none; }
+  }
+</style>
+
+<script>
+  (function () {
+    var btn = document.getElementById('fwTopBtn');
+    if (!btn) return;
+    var THRESHOLD = 300;
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var ticking = false;
+
+    function update() {
+      ticking = false;
+      if (window.scrollY > THRESHOLD) {
+        btn.classList.add('fw-is-visible');
+      } else {
+        btn.classList.remove('fw-is-visible');
+      }
+    }
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    update();
+
+    btn.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: reduced.matches ? 'auto' : 'smooth' });
+    });
+  })();
+</script>

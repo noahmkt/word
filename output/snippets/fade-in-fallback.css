@@ -1,0 +1,51 @@
+/* ============================================================
+   T8. 페이드인 보조 CSS (Elementor 모션 효과 폴백)
+   ------------------------------------------------------------
+   1순위는 Elementor 기본 모션 효과 사용:
+     요소 선택 → 고급(Advanced) → 모션 효과(Motion Effects)
+     → 진입 애니메이션(Entrance Animation) = Fade In (Up)
+     → 지속시간 Slow, 지연은 형제 요소당 150~200ms 스텝 권장
+   ------------------------------------------------------------
+   이 파일은 Elementor 모션이 부자연스러운 구간용 "초기 로드" 페이드.
+   JS/IntersectionObserver 없이 CSS만 사용 — 페이지 로드 시 1회 재생됨
+   (스크롤 진입 시점 감지는 하지 않음. 뷰포트 아래 요소에 쓰면
+   스크롤 도달 전에 이미 재생이 끝나 있으므로 첫 화면 요소에만 사용할 것)
+   ------------------------------------------------------------
+   사용법: 대상 요소(Elementor 고급 → CSS 클래스)에
+     fw-fade            : 0.9s 페이드 + 살짝 위로
+     fw-fade fw-delay-1 : +0.15s 지연 (1~5 단계)
+   ============================================================ */
+
+:root {
+  --fw-fade-duration: 0.9s;   /* 0.8~1.2s 권장 */
+  --fw-fade-step: 0.15s;      /* 순차 지연 간격 */
+}
+
+.fw-fade {
+  opacity: 0;
+  /* transform+opacity만 사용 (GPU 합성) */
+  transform: translate3d(0, 14px, 0);
+  animation: fw-fade-in var(--fw-fade-duration) cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+.fw-delay-1 { animation-delay: calc(var(--fw-fade-step) * 1); }
+.fw-delay-2 { animation-delay: calc(var(--fw-fade-step) * 2); }
+.fw-delay-3 { animation-delay: calc(var(--fw-fade-step) * 3); }
+.fw-delay-4 { animation-delay: calc(var(--fw-fade-step) * 4); }
+.fw-delay-5 { animation-delay: calc(var(--fw-fade-step) * 5); }
+
+@keyframes fw-fade-in {
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* 모션 최소화 환경: 즉시 표시 */
+@media (prefers-reduced-motion: reduce) {
+  .fw-fade {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -1,0 +1,44 @@
+/* ============================================================
+   T7. NO CONTACT 카드 어둡게 (FRCCS 섹션)
+   ------------------------------------------------------------
+   - 대상: #frccs 내 좌측 카드 .elementor-element-008bdc5
+     (내부: 카드 이미지 KakaoTalk_..._08.png + "NO CONTACT" 제목)
+   - 방식: 카드 이미지에 brightness 필터 (오버레이 div 추가 불필요,
+     Elementor 구조 변경 없음. 제목/보더 밝기는 유지됨)
+   - 강도 3단계: 70% / 60% / 50% — 아래 변수 한 줄로 전환
+   ============================================================ */
+
+:root {
+  /* ── 클라이언트 톤 컨펌용 3단계 ──
+     1단계(약)  : 0.7  → 원본 대비 70% 밝기
+     2단계(중)  : 0.6  → 기본값
+     3단계(강)  : 0.5  → 원본 대비 50% 밝기
+     적용할 값 하나만 남기면 됨 */
+  --fw-nc-brightness: 0.6;
+}
+
+/* NO CONTACT 카드 이미지만 어둡게 */
+.elementor-element-008bdc5 img {
+  filter: brightness(var(--fw-nc-brightness));
+  transition: filter 0.3s ease;
+}
+
+/* ------------------------------------------------------------
+   대안) 카드 전체(보더 안쪽)를 반투명 오버레이로 어둡게 하고 싶을 때:
+   위 블록 대신 아래 주석을 해제해 사용.
+   (제목 텍스트는 오버레이 위로 유지됨)
+------------------------------------------------------------
+.elementor-element-008bdc5 { position: relative; }
+.elementor-element-008bdc5::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 13, 25, calc(1 - var(--fw-nc-brightness)));
+  pointer-events: none;
+  z-index: 1;
+}
+.elementor-element-008bdc5 .elementor-element-c496060 {
+  position: relative;
+  z-index: 2;
+}
+------------------------------------------------------------ */
