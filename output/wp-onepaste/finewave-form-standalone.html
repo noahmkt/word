@@ -1,0 +1,89 @@
+<!-- ═══════════════════════════════════════════════════════
+  FINEWAVE 자체 수신형 문의 폼 — WPForms 위젯 대신
+  코드①과 코드② "사이" HTML 위젯에 붙여넣기
+  ─────────────────────────────────────────────
+  사용 전 1곳 수정: 아래 form action의 YOUR_FORM_ID 를
+  Formspree(https://formspree.io) 가입 후 발급받은 폼 ID로 교체
+  (예: action="https://formspree.io/f/abcdwxyz")
+  → 접수된 문의는 등록한 이메일로 수신됩니다 (무료: 월 50건)
+═══════════════════════════════════════════════════════════ -->
+<style>
+#fwform{max-width:680px; margin:0 auto 40px; color:#eef3f9;
+  font-family:"Pretendard",Roboto,"Apple SD Gothic Neo","Malgun Gothic",sans-serif; font-weight:300}
+#fwform label{display:block; margin:18px 0 6px; color:#9db0c4; font-size:15px}
+#fwform label .req{color:#53efff}
+#fwform input[type=text], #fwform input[type=tel], #fwform input[type=email], #fwform textarea{
+  width:100%; box-sizing:border-box; background:#0a0f16; border:1px solid rgba(255,255,255,.16);
+  border-radius:4px; padding:14px 16px; color:#eef3f9; font:inherit; font-size:16px}
+#fwform input:focus, #fwform textarea:focus{outline:none; border-color:rgba(83,239,255,.6)}
+#fwform textarea{min-height:140px; resize:vertical}
+#fwform .consent{display:flex; gap:10px; align-items:flex-start; margin-top:22px; font-size:14px}
+#fwform .consent input{margin-top:4px; accent-color:#53efff}
+#fwform .consent label{margin:0; font-size:14px}
+#fwform details{margin-top:10px; font-size:13px; color:#8b96a5; line-height:1.9;
+  border:1px solid rgba(255,255,255,.1); border-radius:6px; padding:10px 14px}
+#fwform details summary{cursor:pointer; color:#9db0c4}
+#fwform button[type=submit]{width:100%; margin-top:26px; background:#53efff; color:#04101c;
+  font-weight:600; font-size:16px; border:0; border-radius:4px; padding:15px; cursor:pointer; font-family:inherit}
+#fwform button[type=submit]:disabled{opacity:.5; cursor:wait}
+#fwform .msg{margin-top:16px; padding:14px; border-radius:6px; font-size:15px; text-align:center}
+#fwform .msg[hidden]{display:none}
+#fwform .msg.ok{background:rgba(83,239,255,.12); border:1px solid rgba(83,239,255,.4); color:#81f0ff}
+#fwform .msg.err{background:rgba(255,99,99,.1); border:1px solid rgba(255,99,99,.4); color:#ff9c9c}
+</style>
+
+<form id="fwform" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" accept-charset="UTF-8">
+  <label for="fwName">이름 <span class="req">*</span></label>
+  <input type="text" id="fwName" name="이름" required autocomplete="name">
+
+  <label for="fwTel">연락처 <span class="req">*</span></label>
+  <input type="tel" id="fwTel" name="연락처" required autocomplete="tel" placeholder="010-0000-0000">
+
+  <label for="fwMail">이메일</label>
+  <input type="email" id="fwMail" name="이메일" autocomplete="email">
+
+  <label for="fwClinic">병원/클리닉명</label>
+  <input type="text" id="fwClinic" name="병원명" autocomplete="organization">
+
+  <label for="fwMsg">문의 내용 <span class="req">*</span></label>
+  <textarea id="fwMsg" name="문의내용" required></textarea>
+
+  <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+  <div class="consent">
+    <input type="checkbox" id="fwConsent" required>
+    <label for="fwConsent">[필수] 개인정보 수집·이용에 동의합니다.</label>
+  </div>
+  <details>
+    <summary>개인정보 수집·이용 안내 보기</summary>
+    · 수집 항목: 이름, 연락처, 이메일, 병원/클리닉명, 문의 내용<br>
+    · 수집 목적: 제품 문의 접수 및 상담 응대<br>
+    · 보유 기간: 문의 처리 완료 후 지체 없이 파기<br>
+    · 동의를 거부할 수 있으나, 거부 시 문의 접수가 제한됩니다.
+  </details>
+
+  <button type="submit">문의하기</button>
+  <div class="msg ok" role="status" hidden>문의가 정상적으로 접수되었습니다. 빠른 시일 내에 연락드리겠습니다.</div>
+  <div class="msg err" role="alert" hidden>전송에 실패했습니다. 잠시 후 다시 시도하시거나 sales@finemec.co.kr 로 보내주세요.</div>
+</form>
+
+<script>
+(function () {
+  var f = document.getElementById('fwform');
+  var ok = f.querySelector('.msg.ok');
+  var err = f.querySelector('.msg.err');
+  var btn = f.querySelector('button[type=submit]');
+  f.addEventListener('submit', function (e) {
+    if (!window.fetch || !window.FormData) return; /* 구형 브라우저: 기본 전송으로 폴백 */
+    e.preventDefault();
+    ok.hidden = true; err.hidden = true; btn.disabled = true;
+    fetch(f.action, { method: 'POST', body: new FormData(f), headers: { 'Accept': 'application/json' } })
+      .then(function (r) {
+        btn.disabled = false;
+        if (r.ok) { ok.hidden = false; f.reset(); }
+        else { err.hidden = false; }
+      })
+      .catch(function () { btn.disabled = false; err.hidden = false; });
+  });
+})();
+</script>
