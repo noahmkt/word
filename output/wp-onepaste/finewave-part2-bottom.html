@@ -26,6 +26,10 @@
   transition:opacity .25s, transform .25s; font-size:13px; font-family:inherit}
 #fwfloat .btn:hover{transform:translateY(-2px)}
 #fwfloat svg{width:24px; height:24px; fill:none; stroke:#fff; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round}
+/* TOP: 메인(첫 화면) 아래로 내려갔을 때만 노출 */
+#fwfloat .top{opacity:0; pointer-events:none; transform:translateY(6px)}
+#fwfloat .top.on{opacity:1; pointer-events:auto; transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){#fwfloat .btn{transition:none}}
 @media(max-width:760px){#fwfloat{right:12px}
 #fwfloat .btn{width:56px; height:56px; border-radius:8px; font-size:10px}
 #fwfloat svg{width:18px; height:18px}}
@@ -50,7 +54,7 @@
     <svg viewBox="0 0 24 24"><path d="M12 4.5c-4.7 0-8.5 3.1-8.5 7 0 2.2 1.2 4.1 3.1 5.4-.2 1-.7 2.1-1.5 2.9 1.6-.1 3-.7 4.1-1.5.9.3 1.8.4 2.8.4 4.7 0 8.5-3.1 8.5-7s-3.8-7.2-8.5-7.2z"/></svg>
     <span>제품 문의</span>
   </a>
-  <button type="button" class="btn" id="fwTopBtn" aria-label="맨 위로">
+  <button type="button" class="btn top" id="fwTopBtn" aria-label="맨 위로">
     <svg viewBox="0 0 24 24"><path d="m5 14.5 7-7 7 7"/></svg>
     <span>TOP</span>
   </button>
@@ -81,9 +85,13 @@
     });
   }
 
-  /* TOP 버튼: 맨 위로 부드럽게 이동 */
+  /* TOP 버튼: 메인 화면 아래로 내려갔을 때만 노출 + 맨 위로 이동 */
   var topBtn = document.getElementById('fwTopBtn');
   if (topBtn) {
+    var onTop = function () {
+      topBtn.classList.toggle('on', window.scrollY > window.innerHeight * 0.9);
+    };
+    window.addEventListener('scroll', onTop, { passive: true }); onTop();
     topBtn.addEventListener('click', function () {
       window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' });
     });
