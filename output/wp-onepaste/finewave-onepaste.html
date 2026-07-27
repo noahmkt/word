@@ -155,9 +155,9 @@ html{scroll-behavior:smooth}
 #fwv .hero-dev{transform:translateX(-50%)}
 #fwv .fw-beam .on{animation:none; opacity:1}
 #fwv .rv{opacity:1; transform:none; transition:none}}
-#fwv .tech-bg{background-image:url('https://finewave.kr/wp-content/uploads/2026/07/bg-wave-2560x1440.jpg')}
-@media(max-width:1024px){#fwv .tech-bg{background-image:url('https://finewave.kr/wp-content/uploads/2026/07/bg-wave-1600x1200.jpg')}}
-@media(max-width:767px){#fwv .tech-bg{background-image:url('https://finewave.kr/wp-content/uploads/2026/07/bg-wave-1080x1920.jpg')}}
+#fwv .tech-bg{background-image:url('https://finewave.kr/wp-content/uploads/2026/07/bg-wave-2560x1440-1.jpg')}
+@media(max-width:1024px){#fwv .tech-bg{background-image:url('https://finewave.kr/wp-content/uploads/2026/07/bg-wave-1600x1200-1.jpg')}}
+@media(max-width:767px){#fwv .tech-bg{background-image:url('https://finewave.kr/wp-content/uploads/2026/07/bg-wave-1080x1920-1.jpg')}}
 #fwv .hero-bg picture{width:100%;height:100%;display:block}
 
 
@@ -181,6 +181,21 @@ html{scroll-behavior:smooth}
   #fwhd .in{padding:10px 14px}
   #fwhd img.lg{height:36px}
 }
+
+/* ── 테마 스타일 방어(색/굵기/여백 강제) ── */
+#fwv h2, #fwv h3, #fwv p, #fwv figure{margin:0; padding:0; color:inherit; font-family:inherit; line-height:inherit}
+#fwv h2.big{color:var(--text) !important; font-weight:300 !important; font-family:inherit !important}
+#fwv .tagline, #fwv .t-cyan, #fwv .chip{color:var(--cyan2) !important}
+#fwv .lead{color:#eef3f9 !important}
+#fwv .sublead, #fwv .hero-tail .sub, #fwv .scroll-cue{color:var(--dim) !important}
+#fwv .card h3{color:var(--text) !important; font-weight:400 !important}
+#fwv .hero-tail .big, #fwv .hero-copy .slog{color:#dfe9f4 !important}
+#fwhd a{color:#fff !important}
+#fwhd a:hover{color:#81f0ff !important}
+
+/* ── Elementor 박스 폭 탈출(풀블리드) ── */
+#fwv .hero, #fwv .sec{width:100vw; margin-left:calc(50% - 50vw); margin-right:calc(50% - 50vw)}
+body{overflow-x:hidden}
 </style>
 
 <header id="fwhd">
@@ -198,9 +213,9 @@ html{scroll-behavior:smooth}
 <div id="fwv">
 <section class="hero" id="intro">
   <div class="hero-bg"><picture>
-    <source media="(max-width:767px)" srcset="https://finewave.kr/wp-content/uploads/2026/07/bg-wave-1080x1920.jpg">
-    <source media="(max-width:1024px)" srcset="https://finewave.kr/wp-content/uploads/2026/07/bg-wave-1600x1200.jpg">
-    <img src="https://finewave.kr/wp-content/uploads/2026/07/bg-wave-2560x1440.jpg" alt="">
+    <source media="(max-width:767px)" srcset="https://finewave.kr/wp-content/uploads/2026/07/bg-wave-1080x1920-1.jpg">
+    <source media="(max-width:1024px)" srcset="https://finewave.kr/wp-content/uploads/2026/07/bg-wave-1600x1200-1.jpg">
+    <img src="https://finewave.kr/wp-content/uploads/2026/07/bg-wave-2560x1440-1.jpg" alt="">
   </picture></div>
   <div class="hero-glow"></div>
   <div class="hero-rim" aria-hidden="true"></div>
