@@ -162,7 +162,7 @@
      "elType": "widget",
      "widgetType": "html",
      "settings": {
-      "html": "<style>\n.fw-beam{position:relative;max-width:760px;margin:36px auto 0;line-height:0}\n.fw-beam img{display:block;width:100%;height:auto}\n.fw-beam .on{position:absolute;inset:0;opacity:0;animation:fwBlink 2.8s ease-in-out infinite;will-change:opacity}\n@keyframes fwBlink{0%{opacity:0}45%{opacity:1}60%{opacity:1}100%{opacity:0}}\n@media(prefers-reduced-motion:reduce){.fw-beam .on{animation:none;opacity:1}}\n</style>\n<figure class=\"fw-beam\">\n  <img src=\"https://finewave.kr/wp-content/uploads/2026/07/beam-off-1536w.webp\" alt=\"FINECOOL 핸드피스\">\n  <img class=\"on\" src=\"https://finewave.kr/wp-content/uploads/2026/07/beam-on-1536w.webp\" alt=\"\" aria-hidden=\"true\">\n</figure>"
+      "html": "<style>\n.fw-beam{position:relative;max-width:760px;margin:36px auto 0;line-height:0}\n.fw-beam img{display:block;width:100%;height:auto}\n.fw-beam .on{position:absolute;inset:0;opacity:0;animation:fwBlink 2.8s ease-in-out infinite;will-change:opacity}\n@keyframes fwBlink{0%{opacity:0}45%{opacity:1}60%{opacity:1}100%{opacity:0}}\n@media(prefers-reduced-motion:reduce){.fw-beam .on{animation:none;opacity:1}}\n</style>\n<figure class=\"fw-beam\">\n  <img src=\"https://finewave.kr/wp-content/uploads/2026/07/beam-off-1536w.png\" alt=\"FINECOOL 핸드피스\">\n  <img class=\"on\" src=\"https://finewave.kr/wp-content/uploads/2026/07/beam-on-1536w.png\" alt=\"\" aria-hidden=\"true\">\n</figure>"
      },
      "elements": []
     },

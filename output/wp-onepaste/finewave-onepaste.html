@@ -2,7 +2,7 @@
   FINEWAVE 리뉴얼 — 단일 붙여넣기 코드 (Elementor HTML 위젯 1개용)
   ─────────────────────────────────────────────────────────────────
   [사용법]
-  1) wp-assets/ 파일들을 2026년 7월 안에 파일명 그대로 미디어 업로드
+  1) wp-assets-pngjpg/ 파일들을(PNG/JPG 버전) 2026년 7월 안에 파일명 그대로 미디어 업로드
      (다른 달에 올렸다면 이 파일에서 "2026/07"을 그 달로 일괄 치환)
   2) Finewave 페이지 Elementor 편집 → 맨 위에 HTML 위젯 추가
      → 이 파일 전체 붙여넣기 → 미리보기 확인
@@ -37,9 +37,9 @@
 @media(max-width:767px){.fw-tag{font-size:18px}.fw-h2{font-size:30px}.fw-en{font-size:13px}.fw-lead{font-size:16px}.fw-sub{font-size:15px}}
 
 /* ── 배경 (기기별 미디어쿼리) ── */
-.fw-bgwave{background:var(--fw-navy) url('https://finewave.kr/wp-content/uploads/2026/07/bg-wave-2560x1440.webp') center/cover no-repeat}
-@media(max-width:1024px){.fw-bgwave{background-image:url('https://finewave.kr/wp-content/uploads/2026/07/bg-wave-1600x1200.webp')}}
-@media(max-width:767px){.fw-bgwave{background-image:url('https://finewave.kr/wp-content/uploads/2026/07/bg-wave-1080x1920.webp')}}
+.fw-bgwave{background:var(--fw-navy) url('https://finewave.kr/wp-content/uploads/2026/07/bg-wave-2560x1440.jpg') center/cover no-repeat}
+@media(max-width:1024px){.fw-bgwave{background-image:url('https://finewave.kr/wp-content/uploads/2026/07/bg-wave-1600x1200.jpg')}}
+@media(max-width:767px){.fw-bgwave{background-image:url('https://finewave.kr/wp-content/uploads/2026/07/bg-wave-1080x1920.jpg')}}
 
 /* ── 1. 히어로 ── */
 .fw-hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:16vh 20px 0;overflow:hidden}
@@ -114,11 +114,11 @@
 <!-- 1. 히어로 -->
 <section class="fw-sec fw-bgwave fw-hero" id="intro">
   <div class="fw-hero-scrim" aria-hidden="true"></div>
-  <img class="fw-hero-logo" src="https://finewave.kr/wp-content/uploads/2026/07/logo-finewave-1575w.webp" alt="FINEWAVE">
+  <img class="fw-hero-logo" src="https://finewave.kr/wp-content/uploads/2026/07/logo-finewave-1575w.png" alt="FINEWAVE">
   <div class="fw-hero-hair" aria-hidden="true"></div>
   <div class="fw-hero-slog">Go Fine. Get Defined.</div>
-  <img class="fw-hero-dev" src="https://finewave.kr/wp-content/uploads/2026/07/device-front-cutout-1100w.webp"
-       srcset="https://finewave.kr/wp-content/uploads/2026/07/device-front-cutout-560w.webp 560w, https://finewave.kr/wp-content/uploads/2026/07/device-front-cutout-800w.webp 800w, https://finewave.kr/wp-content/uploads/2026/07/device-front-cutout-1100w.webp 1100w"
+  <img class="fw-hero-dev" src="https://finewave.kr/wp-content/uploads/2026/07/device-front-cutout-1100w.png"
+       srcset="https://finewave.kr/wp-content/uploads/2026/07/device-front-cutout-560w.png 560w, https://finewave.kr/wp-content/uploads/2026/07/device-front-cutout-800w.png 800w, https://finewave.kr/wp-content/uploads/2026/07/device-front-cutout-1100w.png 1100w"
        sizes="(max-width:767px) 60vw, 30vw" alt="FINEWAVE 마이크로웨이브 리프팅 장비">
   <div class="fw-hero-tail"><div class="b">Rubbing의 한계를 넘어서다.</div><div class="s">방식을 바꾸면 결과가 달라집니다.</div></div>
   <div class="fw-cue">Scroll to Discover<span aria-hidden="true"></span></div>
@@ -128,7 +128,7 @@
 <section class="fw-sec fw-360">
   <p class="fw-h2">제품 360°</p>
   <p class="fw-en">Product View</p>
-  <div class="fw-turn"><video id="fwTurnV" muted playsinline preload="metadata" poster="https://finewave.kr/wp-content/uploads/2026/07/product-360-poster.webp" aria-label="FINEWAVE 장비 360도 회전"></video></div>
+  <div class="fw-turn"><video id="fwTurnV" muted playsinline preload="metadata" poster="https://finewave.kr/wp-content/uploads/2026/07/product-360-poster.jpg" aria-label="FINEWAVE 장비 360도 회전"></video></div>
 </section>
 
 <!-- 3. 2.45GHz -->
@@ -142,8 +142,8 @@
       <p class="fw-sub">파인웨이브는 2.45GHz 극초단파 에너지를<br>타깃층에 정밀하게 전달하는 의료 장비입니다.</p>
     </div>
     <div class="fw-tech-img">
-      <img src="https://finewave.kr/wp-content/uploads/2026/07/device-quarter-1200w.webp"
-           srcset="https://finewave.kr/wp-content/uploads/2026/07/device-quarter-560w.webp 560w, https://finewave.kr/wp-content/uploads/2026/07/device-quarter-800w.webp 800w, https://finewave.kr/wp-content/uploads/2026/07/device-quarter-1200w.webp 1200w"
+      <img src="https://finewave.kr/wp-content/uploads/2026/07/device-quarter-1200w.png"
+           srcset="https://finewave.kr/wp-content/uploads/2026/07/device-quarter-560w.png 560w, https://finewave.kr/wp-content/uploads/2026/07/device-quarter-800w.png 800w, https://finewave.kr/wp-content/uploads/2026/07/device-quarter-1200w.png 1200w"
            sizes="(max-width:860px) 86vw, 40vw" alt="FINEWAVE 장비 반측면">
     </div>
   </div>
@@ -158,8 +158,8 @@
     <p class="fw-lead">펠티어(Peltier)와 칠러(Chiller)를 결합한 이중 냉각.</p>
     <p class="fw-sub">장시간 고출력 시술에서도 보다 안정적이고 편안한 시술 환경을 제공합니다.</p>
     <figure class="fw-beam">
-      <img src="https://finewave.kr/wp-content/uploads/2026/07/beam-off-1536w.webp" alt="FINECOOL 핸드피스">
-      <img class="on" src="https://finewave.kr/wp-content/uploads/2026/07/beam-on-1536w.webp" alt="" aria-hidden="true">
+      <img src="https://finewave.kr/wp-content/uploads/2026/07/beam-off-1536w.png" alt="FINECOOL 핸드피스">
+      <img class="on" src="https://finewave.kr/wp-content/uploads/2026/07/beam-on-1536w.png" alt="" aria-hidden="true">
     </figure>
     <div class="fw-chips"><span class="fw-chip">적은 통증</span><span class="fw-chip">부작용 적음</span><span class="fw-chip">짧은 다운타임</span><span class="fw-chip">안정적인 내구성</span></div>
   </div>

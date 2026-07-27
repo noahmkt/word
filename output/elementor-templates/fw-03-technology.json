@@ -11,17 +11,17 @@
     "flex_direction": "row",
     "background_background": "classic",
     "background_image": {
-     "url": "https://finewave.kr/wp-content/uploads/2026/07/bg-wave-2560x1440.webp",
+     "url": "https://finewave.kr/wp-content/uploads/2026/07/bg-wave-2560x1440.jpg",
      "id": 0,
      "size": ""
     },
     "background_image_tablet": {
-     "url": "https://finewave.kr/wp-content/uploads/2026/07/bg-wave-1600x1200.webp",
+     "url": "https://finewave.kr/wp-content/uploads/2026/07/bg-wave-1600x1200.jpg",
      "id": 0,
      "size": ""
     },
     "background_image_mobile": {
-     "url": "https://finewave.kr/wp-content/uploads/2026/07/bg-wave-1080x1920.webp",
+     "url": "https://finewave.kr/wp-content/uploads/2026/07/bg-wave-1080x1920.jpg",
      "id": 0,
      "size": ""
     },
@@ -241,7 +241,7 @@
        "widgetType": "image",
        "settings": {
         "image": {
-         "url": "https://finewave.kr/wp-content/uploads/2026/07/device-quarter-1200w.webp",
+         "url": "https://finewave.kr/wp-content/uploads/2026/07/device-quarter-1200w.png",
          "id": 0,
          "size": ""
         },
