@@ -17,7 +17,8 @@
 html{scroll-behavior:smooth}
 #fwv{background:var(--navy); color:var(--text);
   font-family:"Pretendard",Roboto,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
-  font-weight:300; line-height:1.8; font-size:17px; letter-spacing:-0.01em; -webkit-font-smoothing:antialiased}
+  font-weight:300; line-height:1.8; font-size:17px; letter-spacing:-0.01em; -webkit-font-smoothing:antialiased;
+  word-break:keep-all; overflow-wrap:break-word}
 #fwv img{max-width:100%}
 #fwv section{scroll-margin-top:96px}
 #fwv /* T4 앵커 픽스 적용 데모 */
@@ -268,6 +269,16 @@ body, #page, .elementor{background:#000}
 @media(max-width:760px){#fwfloat{right:10px; gap:8px}
 #fwfloat .btn{width:44px; height:44px; border-radius:8px; font-size:8.5px; gap:3px}
 #fwfloat svg{width:15px; height:15px}}
+
+/* ── 모바일 정렬 보정 (텍스트 줄바꿈·칩 그리드) ── */
+@media(max-width:760px){
+  #fwv .lead{font-size:17px; padding:0 30px}
+  #fwv .sublead{font-size:14.5px; padding:0 30px}
+  #fwv .tagline{font-size:18px}
+  #fwv .chips{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px;
+    max-width:340px; margin-left:auto; margin-right:auto}
+  #fwv .chip{padding:13px 6px; text-align:center; font-size:14px}
+}
 </style>
 
 <header id="fwhd">
