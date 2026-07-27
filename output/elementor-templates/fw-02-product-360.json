@@ -1,0 +1,108 @@
+{
+ "version": "0.4",
+ "title": "FW 02 제품 360도",
+ "type": "container",
+ "content": [
+  {
+   "id": "fe92ea2",
+   "elType": "container",
+   "settings": {
+    "content_width": "boxed",
+    "flex_direction": "column",
+    "background_background": "classic",
+    "background_color": "#111111",
+    "padding": {
+     "unit": "px",
+     "top": "110",
+     "bottom": "110",
+     "left": "20",
+     "right": "20",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "70",
+     "bottom": "70",
+     "left": "16",
+     "right": "16",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "0a841ff",
+     "elType": "widget",
+     "widgetType": "heading",
+     "settings": {
+      "title": "제품 360°",
+      "header_size": "h2",
+      "title_color": "#EEF3F9",
+      "align": "center",
+      "typography_typography": "custom",
+      "typography_font_size": {
+       "unit": "px",
+       "size": 48,
+       "sizes": []
+      },
+      "typography_font_size_tablet": {
+       "unit": "px",
+       "size": 38,
+       "sizes": []
+      },
+      "typography_font_size_mobile": {
+       "unit": "px",
+       "size": 30,
+       "sizes": []
+      },
+      "typography_font_weight": "300"
+     },
+     "elements": []
+    },
+    {
+     "id": "c6e4118",
+     "elType": "widget",
+     "widgetType": "heading",
+     "settings": {
+      "title": "PRODUCT VIEW",
+      "header_size": "h3",
+      "title_color": "#81F0FF",
+      "align": "center",
+      "typography_typography": "custom",
+      "typography_font_size": {
+       "unit": "px",
+       "size": 16,
+       "sizes": []
+      },
+      "typography_font_size_tablet": {
+       "unit": "px",
+       "size": 15,
+       "sizes": []
+      },
+      "typography_font_size_mobile": {
+       "unit": "px",
+       "size": 13,
+       "sizes": []
+      },
+      "typography_font_weight": "300",
+      "typography_letter_spacing": {
+       "unit": "px",
+       "size": 3,
+       "sizes": []
+      }
+     },
+     "elements": []
+    },
+    {
+     "id": "e6464a9",
+     "elType": "widget",
+     "widgetType": "html",
+     "settings": {
+      "html": "<style>\n.fw-turn{max-width:900px;margin:0 auto;line-height:0;border-radius:10px;overflow:hidden}\n.fw-turn video{width:100%;height:auto;display:block;opacity:0;transform:translateY(10px) scale(.985);transition:opacity .8s ease-out,transform .8s ease-out}\n.fw-turn.on video{opacity:1;transform:none}\n@media(prefers-reduced-motion:reduce){.fw-turn video{opacity:1;transform:none;transition:none}}\n</style>\n<div class=\"fw-turn\"><video id=\"fwTurnV\" muted playsinline preload=\"metadata\" poster=\"https://finewave.kr/wp-content/uploads/2026/07/product-360-poster.webp\" aria-label=\"FINEWAVE 장비 360도 회전\"></video></div>\n<script>(function(){\nvar box=document.querySelector('.fw-turn'),v=document.getElementById('fwTurnV');\nvar mob=window.matchMedia('(max-width:767px)').matches;\nvar s=document.createElement('source');\ns.src=mob?'https://finewave.kr/wp-content/uploads/2026/07/product-360-640.mp4':'https://finewave.kr/wp-content/uploads/2026/07/product-360-960.mp4'; s.type='video/mp4';\nv.appendChild(s); v.load();\nvar red=window.matchMedia('(prefers-reduced-motion: reduce)').matches, done=false;\nfunction go(){box.classList.add('on'); if(!red&&!done){done=true;var p=v.play(); if(p&&p.catch)p.catch(function(){});}}\nif(!('IntersectionObserver' in window)){go();return;}\nvar io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){go();io.disconnect();}});},{threshold:.6});\nio.observe(box);\n})();</script>"
+     },
+     "elements": []
+    }
+   ]
+  }
+ ],
+ "page_settings": []
+}

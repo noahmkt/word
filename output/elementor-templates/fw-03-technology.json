@@ -1,0 +1,272 @@
+{
+ "version": "0.4",
+ "title": "FW 03 2.45GHz",
+ "type": "container",
+ "content": [
+  {
+   "id": "53d8936",
+   "elType": "container",
+   "settings": {
+    "content_width": "boxed",
+    "flex_direction": "row",
+    "background_background": "classic",
+    "background_image": {
+     "url": "https://finewave.kr/wp-content/uploads/2026/07/bg-wave-2560x1440.webp",
+     "id": 0,
+     "size": ""
+    },
+    "background_image_tablet": {
+     "url": "https://finewave.kr/wp-content/uploads/2026/07/bg-wave-1600x1200.webp",
+     "id": 0,
+     "size": ""
+    },
+    "background_image_mobile": {
+     "url": "https://finewave.kr/wp-content/uploads/2026/07/bg-wave-1080x1920.webp",
+     "id": 0,
+     "size": ""
+    },
+    "background_position": "center center",
+    "background_repeat": "no-repeat",
+    "background_size": "cover",
+    "flex_wrap_mobile": "wrap",
+    "padding": {
+     "unit": "px",
+     "top": "120",
+     "bottom": "120",
+     "left": "24",
+     "right": "24",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "70",
+     "bottom": "70",
+     "left": "18",
+     "right": "18",
+     "isLinked": false
+    },
+    "_element_id": "technology"
+   },
+   "elements": [
+    {
+     "id": "5b49cc6",
+     "elType": "container",
+     "settings": {
+      "content_width": "full",
+      "flex_direction": "column",
+      "width": {
+       "unit": "%",
+       "size": 55,
+       "sizes": []
+      },
+      "width_mobile": {
+       "unit": "%",
+       "size": 100,
+       "sizes": []
+      }
+     },
+     "elements": [
+      {
+       "id": "bc0bd51",
+       "elType": "widget",
+       "widgetType": "heading",
+       "settings": {
+        "title": "깊이에 닿는 에너지",
+        "header_size": "h3",
+        "title_color": "#81F0FF",
+        "align": "left",
+        "typography_typography": "custom",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 24,
+         "sizes": []
+        },
+        "typography_font_size_tablet": {
+         "unit": "px",
+         "size": 20,
+         "sizes": []
+        },
+        "typography_font_size_mobile": {
+         "unit": "px",
+         "size": 18,
+         "sizes": []
+        },
+        "typography_font_weight": "300"
+       },
+       "elements": []
+      },
+      {
+       "id": "b03f099",
+       "elType": "widget",
+       "widgetType": "heading",
+       "settings": {
+        "title": "2.45GHz<br>마이크로웨이브 기술",
+        "header_size": "h2",
+        "title_color": "#EEF3F9",
+        "align": "left",
+        "typography_typography": "custom",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 50,
+         "sizes": []
+        },
+        "typography_font_size_tablet": {
+         "unit": "px",
+         "size": 38,
+         "sizes": []
+        },
+        "typography_font_size_mobile": {
+         "unit": "px",
+         "size": 30,
+         "sizes": []
+        },
+        "typography_font_weight": "300"
+       },
+       "elements": []
+      },
+      {
+       "id": "fef6089",
+       "elType": "widget",
+       "widgetType": "heading",
+       "settings": {
+        "title": "- MICROWAVE TECHNOLOGY",
+        "header_size": "h4",
+        "title_color": "#81F0FF",
+        "align": "left",
+        "typography_typography": "custom",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 16,
+         "sizes": []
+        },
+        "typography_font_size_tablet": {
+         "unit": "px",
+         "size": 15,
+         "sizes": []
+        },
+        "typography_font_size_mobile": {
+         "unit": "px",
+         "size": 13,
+         "sizes": []
+        },
+        "typography_font_weight": "300",
+        "typography_letter_spacing": {
+         "unit": "px",
+         "size": 2,
+         "sizes": []
+        }
+       },
+       "elements": []
+      },
+      {
+       "id": "15508bb",
+       "elType": "widget",
+       "widgetType": "heading",
+       "settings": {
+        "title": "피부 표면은 안전하게, 에너지는 타깃층까지.",
+        "header_size": "h4",
+        "title_color": "#EEF3F9",
+        "align": "left",
+        "typography_typography": "custom",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 21,
+         "sizes": []
+        },
+        "typography_font_size_tablet": {
+         "unit": "px",
+         "size": 19,
+         "sizes": []
+        },
+        "typography_font_size_mobile": {
+         "unit": "px",
+         "size": 16,
+         "sizes": []
+        },
+        "typography_font_weight": "500"
+       },
+       "elements": []
+      },
+      {
+       "id": "605860e",
+       "elType": "widget",
+       "widgetType": "text-editor",
+       "settings": {
+        "editor": "<p>파인웨이브는 2.45GHz 극초단파 에너지를<br>타깃층에 정밀하게 전달하는 의료 장비입니다.</p>",
+        "typography_typography": "custom",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 17,
+         "sizes": []
+        },
+        "typography_font_size_tablet": {
+         "unit": "px",
+         "size": 16,
+         "sizes": []
+        },
+        "typography_font_size_mobile": {
+         "unit": "px",
+         "size": 15,
+         "sizes": []
+        },
+        "text_color": "#9DB0C4"
+       },
+       "elements": []
+      }
+     ]
+    },
+    {
+     "id": "b790535",
+     "elType": "container",
+     "settings": {
+      "content_width": "full",
+      "flex_direction": "column",
+      "width": {
+       "unit": "%",
+       "size": 45,
+       "sizes": []
+      },
+      "width_mobile": {
+       "unit": "%",
+       "size": 100,
+       "sizes": []
+      },
+      "justify_content": "center",
+      "align_items": "center"
+     },
+     "elements": [
+      {
+       "id": "742745d",
+       "elType": "widget",
+       "widgetType": "image",
+       "settings": {
+        "image": {
+         "url": "https://finewave.kr/wp-content/uploads/2026/07/device-quarter-1200w.webp",
+         "id": 0,
+         "size": ""
+        },
+        "width": {
+         "unit": "%",
+         "size": 92,
+         "sizes": []
+        },
+        "width_tablet": {
+         "unit": "%",
+         "size": 80,
+         "sizes": []
+        },
+        "width_mobile": {
+         "unit": "%",
+         "size": 86,
+         "sizes": []
+        }
+       },
+       "elements": []
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "page_settings": []
+}

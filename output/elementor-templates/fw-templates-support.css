@@ -1,0 +1,15 @@
+/* ── Elementor 템플릿 보조 CSS (사이트 설정 > 사용자 정의 CSS 또는
+     외모 > 사용자 정의하기 > 추가 CSS 에 1회 추가) ── */
+
+/* FINECOOL 특장점 칩 */
+.fw-chip { border: 1px solid rgba(166,246,255,.16); border-radius: 6px; padding: 12px 24px; }
+
+/* FRCCS - NO CONTACT 카드 어둡기 (강도: 0.7 / 0.6 / 0.5 중 택1) */
+:root { --fw-nc-brightness: 0.6; }
+.fw-nc-card img { filter: brightness(var(--fw-nc-brightness)); transition: filter .3s ease; }
+
+/* FRCCS 카드 섀도 */
+.fw-nc-card, .fw-nc-card + div { box-shadow: 1px 1px 0 0 #00D8FF; }
+
+/* 앵커 오프셋 (frccs-anchor-fix.css 미적용 시에만) */
+#intro, #technology, #finecool, #frccs { scroll-margin-top: 115px; }
