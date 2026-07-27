@@ -169,17 +169,44 @@ html{scroll-behavior:smooth}
 #fwhd{position:fixed; inset:0 0 auto 0; z-index:1000; transition:background .35s ease, box-shadow .35s ease; background:transparent}
 #fwhd.solid{background:rgba(17,17,17,.92); box-shadow:0 1px 0 rgba(255,255,255,.06); backdrop-filter:blur(6px)}
 #fwhd .in{max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:14px 24px}
-#fwhd img.lg{height:55px; width:auto; display:block}
+#fwhd img.lg{height:18px; width:auto; display:block}
 #fwhd nav{display:flex; gap:30px; align-items:center}
 #fwhd a{color:#fff; text-decoration:none; font-size:15px; font-weight:300; font-family:Jost,Pretendard,sans-serif; letter-spacing:.08em; opacity:.9}
 #fwhd a:hover{color:#81f0ff; opacity:1}
 #fwhd .ig{display:flex; line-height:0}
 #fwhd .ig svg{width:21px; height:21px; fill:none; stroke:#fff; stroke-width:1.7; stroke-linecap:round}
+#fwhd .burger{display:none; position:relative; width:42px; height:42px; background:none; border:0; padding:0; cursor:pointer}
+#fwhd .burger span{position:absolute; left:9px; right:9px; height:2px; border-radius:2px; background:#fff;
+  transition:transform .3s ease, opacity .3s ease}
+#fwhd .burger span:nth-child(1){top:13px}
+#fwhd .burger span:nth-child(2){top:20px}
+#fwhd .burger span:nth-child(3){top:27px}
+#fwhd.open .burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+#fwhd.open .burger span:nth-child(2){opacity:0}
+#fwhd.open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+/* 태블릿: 로고 축소 + 메뉴 간격 축소 */
+@media(max-width:1024px){
+  #fwhd img.lg{height:16px}
+  #fwhd nav{gap:20px}
+  #fwhd a{font-size:13.5px}
+  #fwhd .in{padding:12px 18px}
+}
+/* 모바일: 로고 축소 + 인라인 메뉴 → 햄버거 드롭다운 */
 @media(max-width:760px){
-  #fwhd nav{gap:14px; flex-wrap:wrap; justify-content:flex-end}
-  #fwhd a{font-size:12.5px}
-  #fwhd .in{padding:10px 14px}
-  #fwhd img.lg{height:36px}
+  #fwhd .in{padding:9px 14px}
+  #fwhd img.lg{height:14px}
+  #fwhd .burger{display:block}
+  #fwhd nav{position:fixed; top:0; left:0; right:0; padding:64px 24px 26px; z-index:-1;
+    flex-direction:column; align-items:flex-start; gap:4px;
+    background:rgba(10,10,12,.97); box-shadow:0 12px 30px rgba(0,0,0,.45);
+    opacity:0; pointer-events:none; transform:translateY(-10px);
+    transition:opacity .3s ease, transform .3s ease}
+  #fwhd.open nav{opacity:1; pointer-events:auto; transform:translateY(0)}
+  #fwhd a{font-size:16px; padding:10px 0; width:100%}
+  #fwhd .ig{padding-top:14px; width:auto}
+}
+@media(prefers-reduced-motion:reduce){
+  #fwhd nav, #fwhd .burger span{transition:none}
 }
 
 /* ── 테마 스타일 방어(색/굵기/여백 강제) ── */
@@ -257,6 +284,9 @@ body{overflow-x:hidden}
         <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r=".9" fill="#fff" stroke="none"/></svg>
       </a>
     </nav>
+    <button type="button" class="burger" id="fwBurger" aria-label="메뉴 열기" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
@@ -391,6 +421,20 @@ body{overflow-x:hidden}
   var hd = document.getElementById('fwhd');
   function onScroll() { hd.classList.toggle('solid', window.scrollY > 40); }
   window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  /* 모바일 햄버거 메뉴 */
+  var burger = document.getElementById('fwBurger');
+  burger.addEventListener('click', function () {
+    var open = hd.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+  });
+  hd.querySelector('nav').addEventListener('click', function (e) {
+    if (e.target.closest('a')) {
+      hd.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    }
+  });
 
   /* TOP 버튼: 300px 이후 표시 */
   var topBtn = document.getElementById('fwTopBtn');
