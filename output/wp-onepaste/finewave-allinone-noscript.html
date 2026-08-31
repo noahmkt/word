@@ -105,6 +105,17 @@ html{scroll-behavior:smooth}
 @media(max-width:860px){#fwv .split{grid-template-columns:1fr; gap:30px}
 #fwv .split .txt h2.big, #fwv .split .txt .tagline, #fwv .split .txt .t-cyan, #fwv .split .txt .lead, #fwv .split .txt .sublead{text-align:center}
 #fwv .split img{height:494px}}
+#fwv /* ── dual mode ── */
+#dualmode{background:var(--navy2)}
+#fwv .modes{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; max-width:1000px; margin:50px auto 0}
+#fwv .mode{border:1px solid var(--hair); border-radius:10px; padding:0 0 32px; text-align:center;
+  background:rgba(4,13,25,.45); overflow:hidden}
+#fwv .mode img{width:100%; height:auto; display:block}
+#fwv .mode h3{margin:26px 0 0; font-weight:400; font-size:22px; letter-spacing:.08em; color:var(--cyan2) !important}
+#fwv .mode .en{color:var(--text) !important; font-size:15px; letter-spacing:.04em; margin-top:6px; font-family:Jost,Pretendard,sans-serif}
+#fwv .mode .ds{color:var(--dim) !important; font-size:15.5px; margin:14px auto 0; max-width:400px; padding:0 24px}
+@media(max-width:760px){#fwv .modes{grid-template-columns:1fr; gap:16px; max-width:420px}
+#fwv .mode .ds{font-size:14px}}
 #fwv /* ── finecool ── */
 #finecool{background:linear-gradient(284deg,#1e293b 3%,#000 100%)}
 #fwv .fw-beam{position:relative; line-height:0; max-width:760px; margin:40px auto 0}
@@ -286,7 +297,7 @@ body, #page, .elementor{background:#000}
   <div class="in">
     <a href="#intro" aria-label="FINEWAVE 홈"><img class="lg" src="https://finewave.kr/wp-content/uploads/2026/07/logo-finewave-600w.png" alt="FINEWAVE"></a>
     <nav aria-label="주 메뉴">
-      <a href="#intro">INTRO</a><a href="#technology">2.45GHz</a><a href="#finecool">FINECOOL™</a><a href="#frccs">FRCCS</a><a href="#faq">FAQ</a>
+      <a href="#intro">INTRO</a><a href="#technology">2.45GHz</a><a href="#dualmode">DUAL MODE</a><a href="#finecool">FINECOOL™</a><a href="#frccs">FRCCS</a><a href="#faq">FAQ</a>
       <a class="ig" href="https://www.instagram.com/finewave.official/" target="_blank" rel="noopener" aria-label="인스타그램 (새 창)">
         <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r=".9" fill="#fff" stroke="none"/></svg>
       </a>
@@ -314,8 +325,8 @@ body, #page, .elementor{background:#000}
     <div class="slog">Go Fine. Get Defined.</div>
   </div>
   <div class="hero-tail">
-    <div class="big">Rubbing의 한계를 넘어서다.</div>
-    <div class="sub">방식을 바꾸면 결과가 달라집니다.</div>
+    <div class="big">Dual Performance Microwave</div>
+    <div class="sub">Rubbing의 한계를 넘어서다</div>
   </div>
   <div class="scroll-cue">Scroll to Discover<span class="ch" aria-hidden="true"></span></div>
 </section>
@@ -342,6 +353,28 @@ body, #page, .elementor{background:#000}
         <p class="sublead rv d2">파인웨이브는 2.45GHz 극초단파 에너지를<br>타깃층에 정밀하게 전달하는 의료 장비입니다.</p>
       </div>
       <div class="img rv d3"><img src="https://finewave.kr/wp-content/uploads/2026/07/device-quarter-1200w.png" alt="FINEWAVE 장비 반측면"></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="dualmode">
+  <div class="sec-in">
+    <h2 class="big rv">Dual - performance</h2>
+    <p class="t-cyan rv">- DUAL MODE</p>
+    <p class="lead rv">Finewave의 두가지 모드는 목적 부위의 깊이와 면적에 따라<br>최적화된 에너지를 전달하는 효과적인 솔루션입니다.</p>
+    <div class="modes">
+      <div class="mode rv">
+        <img src="https://finewave.kr/wp-content/uploads/2026/08/dual-fine-mode-900w.png" alt="FINE MODE - 국소 부위 핀포인트 열 집중 모식도">
+        <h3>FINE MODE</h3>
+        <p class="en">Targeted High-Peak Delivery</p>
+        <p class="ds">짧은 시간 동안 높은 에너지를 집중 조사하여, 타겟 부위에 필요 에너지를 선택적으로 전달하도록 설계된 모드입니다.</p>
+      </div>
+      <div class="mode rv">
+        <img src="https://finewave.kr/wp-content/uploads/2026/08/dual-rubbing-mode-900w.png" alt="RUBBING MODE - 시술 부위 전반 균일 열 확산 모식도">
+        <h3>RUBBING MODE</h3>
+        <p class="en">Gradual Heating</p>
+        <p class="ds">부드러운 러빙을 통해 시술 부위 전반에 열에너지를 점진적이고 균일하게 전달합니다.</p>
+      </div>
     </div>
   </div>
 </section>
